@@ -1,0 +1,11 @@
+graph TD;
+    A[Login] -->|Usuari validat| B[Home]
+    A -->|No registrat| C[Registre]
+    B --> D[Vista Child Taps]
+    B --> E[Configuració]
+    B --> F[Historial]
+    D --> G[Detall Tap]
+    E --> H[Canviar Contrasenya]
+    E --> I[Gestió de Comptes]
+    F --> J[Detalls Historial]
+    C -->|Registre complet| A
