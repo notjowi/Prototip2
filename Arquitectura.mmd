@@ -1,0 +1,17 @@
+graph LR;
+    subgraph Frontend
+        A1[React Native]
+        A2[Redux]
+        A3[UI Components]
+    end
+    subgraph Backend
+        B1[Node.js]
+        B2[Express.js]
+        B3[MongoDB]
+    end
+    subgraph API
+        C1[REST API]
+    end
+    A1 -->|Calls| C1
+    C1 -->|Data| B3
+    B1 -->|Handles Requests| B2
