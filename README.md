@@ -79,23 +79,27 @@ graph TD;
 
 ## 3. Diagrama d'Arquitectura
 ```mermaid
-graph LR;
-    subgraph Frontend
-        A1[React Native]
-        A2[Redux]
-        A3[UI Components]
+flowchart TD
+    subgraph Server["🖥️ Servidor"]
+        C -->|Consulta DAOUser | D[Server DAO User <br> getUserByUsername]
+        D -->|Respon Objecte User if exists| C
     end
-    subgraph Backend
-        B1[Node.js]
-        B2[Express.js]
-        B3[MongoDB]
-    end
-    subgraph API
-        C1[REST API]
-    end
-    A1 -->|Calls| C1
-    C1 -->|Data| B3
-    B1 -->|Handles Requests| B2
+    
+    subgraph Client["🌐 Client"]
+        A[<b>Client View</b> <br> Input username] -->|Envia dades username| B[Client DAO User<br> getUserByUsername]
+        B -->|Petición HTTP  GET | C[<b>Servidor</b> <br> Webservice]
+        B -->|Dades processades| F[<b>Client View</b> <br> Show Info User if exists]
+        C -->|Reposta HTTP Json | B
+    end       
+
+    classDef client fill:#D6EAF8,stroke:#333,stroke-width:2px;
+    classDef server fill:#F9EBEA,stroke:#333,stroke-width:2px;
+
+    class A client;
+    class B client;
+    class F client;
+    class C server;
+    class D server;
 ```
 
 ---
